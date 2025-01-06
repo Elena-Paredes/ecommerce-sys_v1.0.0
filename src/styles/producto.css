@@ -100,7 +100,7 @@ header {
   border: none;
   cursor: pointer;
   margin-top: 20px;
-  width: 100%; /* Ocupa el 100% del contenedor */
+  width: 100%; 
 }
 
 .cta-button:hover {
