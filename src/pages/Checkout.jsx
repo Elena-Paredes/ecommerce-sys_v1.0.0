@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { CartContext } from '../context/Carrito';
-import { useNavigate, Link } from 'react-router-dom'; // Agregado "Link"
+import { useNavigate, Link } from 'react-router-dom'; 
 import '../styles/checkout.css';
 import logo from '/plus-icon.png';
 
@@ -46,8 +46,8 @@ const Checkout = () => {
           </div>
           <button className="hamburger">☰</button>
           <ul className="nav-menu">
-            <li><Link to="/home">Principal</Link></li> {/* Cambiado de <a> a <Link> */}
-            <li><Link to="/checkout">Mi carrito</Link></li> {/* Cambiado de <a> a <Link> */}
+            <li><Link to="/home">Principal</Link></li> 
+            <li><Link to="/checkout">Mi carrito</Link></li> 
           </ul>
         </nav>
       </header>

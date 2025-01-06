@@ -1,20 +1,19 @@
 // PDP.jsx
 import React, { useEffect, useState, useContext } from 'react';
-import { useParams, useNavigate, Link } from 'react-router-dom'; // Agregado "Link"
-import { CartContext } from '../context/Carrito'; // Importa el contexto del carrito
+import { useParams, useNavigate, Link } from 'react-router-dom'; 
+import { CartContext } from '../context/Carrito'; 
 import axios from 'axios';
 import '../styles/producto.css';
 import logo from '/plus-icon.png';
 
 const Producto = () => {
-  const { id } = useParams(); // Obtiene el ID del producto desde la URL
+  const { id } = useParams(); // ID de los productos
   const [producto, setProducto] = useState(null);
-  const [cantidad, setCantidad] = useState(0); // Inicializa en 0 si no está en el carrito
+  const [cantidad, setCantidad] = useState(0); 
   const navigate = useNavigate();
 
-  const { carrito, agregarProducto, actualizarCantidad } = useContext(CartContext); // Incluye funciones de agregar y actualizar
+  const { carrito, agregarProducto, actualizarCantidad } = useContext(CartContext); 
 
-  // Cargar detalles del producto
   const fetchProducto = async () => {
     try {
       const response = await axios.get(`https://fakestoreapi.com/products/${id}`);
@@ -24,10 +23,10 @@ const Producto = () => {
     }
   };
 
-  // Sincronizar la cantidad con el carrito
+//Actualización en tiempo real del carrito, si no hay nada 0. 
   const sincronizarCantidad = () => {
     const productoEnCarrito = carrito.find((item) => item.id === parseInt(id));
-    setCantidad(productoEnCarrito ? productoEnCarrito.cantidad : 0); // Si está en el carrito, usa su cantidad; si no, es 0
+    setCantidad(productoEnCarrito ? productoEnCarrito.cantidad : 0); 
   };
 
   const handleAgregarAlCarrito = () => {
@@ -35,10 +34,10 @@ const Producto = () => {
     if (cantidad > 0) {
       const productoEnCarrito = carrito.find((item) => item.id === parseInt(id));
       if (productoEnCarrito) {
-        // Si el producto ya está en el carrito, actualizar la cantidad seleccionada
+        // Se ctualiza la cantidad seleccionada
         actualizarCantidad(parseInt(id), cantidad);
       } else {
-        // Si no está en el carrito, agregar el producto con la cantidad seleccionada
+        // Agregar el producto con la cantidad seleccionada si está vacio el carrito
         agregarProducto({
           id: producto.id,
           title: producto.title,
@@ -62,11 +61,11 @@ const Producto = () => {
   };
 
   useEffect(() => {
-    fetchProducto(); // Cargar los datos al montar el componente
+    fetchProducto();
   }, [id]);
 
   useEffect(() => {
-    sincronizarCantidad(); // Sincroniza la cantidad cuando cambia el carrito
+    sincronizarCantidad(); 
   }, [carrito]);
 
   return (
@@ -77,8 +76,8 @@ const Producto = () => {
             <img src={logo} alt="Logo de la empresa" className="logo" />
           </div>
           <ul className="nav-menu">
-            <li><Link to="/home">Principal</Link></li> {/* Cambiado <a href="/home"> por <Link to="/home"> */}
-            <li><Link to="/checkout">Mi carrito</Link></li> {/* Cambiado <a href="/checkout"> por <Link to="/checkout"> */}
+            <li><Link to="/home">Principal</Link></li> 
+            <li><Link to="/checkout">Mi carrito</Link></li> 
           </ul>
         </nav>
       </header>

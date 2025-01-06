@@ -12,10 +12,7 @@ function App() {
     <CartProvider> 
       <Router>
         <Routes>
-          {/* Ruta raíz redirige a /home */}
           <Route path="/" element={<Navigate to="/home" />} />
-          
-          {/* Rutas internas */}
           <Route path="/home" element={<Home />} />
           <Route path="/producto/:id" element={<PDP />} />
           <Route path="/checkout" element={<Checkout />} />
