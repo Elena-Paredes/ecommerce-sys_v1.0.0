@@ -1,0 +1,152 @@
+/*/checkout.css*/
+.cart-container {
+    max-width: 800px;
+    width: 100%;
+    margin: 40px auto;
+    background-color: #f8f8f5;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  }
+  
+  h2 {
+    margin-top: 2rem;
+    text-align: center;
+    font-size: 2.5rem;
+    color: #23306A;
+    margin-bottom: 20px;
+  }
+  
+  .cart-header {
+    display: flex;
+    justify-content: space-between; 
+    font-weight: bold;
+    font-size: 1.8rem;
+    padding: 10px 0;
+    border-bottom: 2px solid #ddd;
+    color: #888127;
+  }
+  
+  .cart-header div {
+    text-align: center;
+    flex: 1; 
+    margin: 0 5px; 
+  }
+  
+  .cart-items {
+    margin-top: 20px;
+  }
+  
+  .cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .item-name {
+    font-size: 1.5rem;
+    flex: 1;
+    text-align: center;
+  }
+  
+  .item-quantity {
+    width: 100px;
+    padding: 10px;
+    text-align: center;
+    border-radius: 10px;
+    border: 2px solid #23306A;
+    font-size: 1.5rem;
+  }
+  
+  .item-price {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    flex: 1;
+  }
+  
+  .cart-summary {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 2px solid #ddd;
+    text-align: center;
+  }
+  
+  .summary-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+  }
+  
+  .summary-row span {
+    font-weight: bold;
+  }
+  
+  .checkout-button, .cancel-button {
+  background-color: #23306A;
+  color: white;
+  padding: 10px 20px;
+  margin: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.checkout-button:hover {
+  background-color: #888127;
+}
+
+.cancel-button {
+  background-color: #ff6b6b;
+}
+
+.cancel-button:hover {
+  background-color: #ff4c4c;
+}
+  
+  /*Menu responsivo*/
+@media (max-width: 768px) {
+    .cart-container {
+      padding: 20px;
+    }
+  
+    .cart-header div,
+    .cart-item span {
+      font-size: 1.2rem; 
+    }
+  
+    .item-quantity {
+      width: 60px; 
+    }
+  
+    .checkout-button {
+      padding: 10px 20px; 
+      font-size: 1.5rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .cart-container {
+      padding: 15px;
+    }
+  
+    .cart-header div,
+    .cart-item span {
+      font-size: 1rem;
+    }
+  
+    .item-quantity {
+      width: 50px;
+    }
+  
+    .checkout-button {
+      font-size: 1.2rem;
+      padding: 8px 16px;
+    }
+  }
+  
+  
