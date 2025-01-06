@@ -4,12 +4,14 @@ import { useParams, useNavigate, Link } from 'react-router-dom';
 import { CartContext } from '../context/Carrito'; 
 import axios from 'axios';
 import '../styles/producto.css';
+import '../styles/index.css';
 import logo from '/plus-icon.png';
 
 const Producto = () => {
-  const { id } = useParams(); // ID de los productos
+  const { id } = useParams();
   const [producto, setProducto] = useState(null);
   const [cantidad, setCantidad] = useState(0); 
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
 
   const { carrito, agregarProducto, actualizarCantidad } = useContext(CartContext); 
@@ -23,7 +25,6 @@ const Producto = () => {
     }
   };
 
-//Actualización en tiempo real del carrito, si no hay nada 0. 
   const sincronizarCantidad = () => {
     const productoEnCarrito = carrito.find((item) => item.id === parseInt(id));
     setCantidad(productoEnCarrito ? productoEnCarrito.cantidad : 0); 
@@ -34,10 +35,8 @@ const Producto = () => {
     if (cantidad > 0) {
       const productoEnCarrito = carrito.find((item) => item.id === parseInt(id));
       if (productoEnCarrito) {
-        // Se ctualiza la cantidad seleccionada
         actualizarCantidad(parseInt(id), cantidad);
       } else {
-        // Agregar el producto con la cantidad seleccionada si está vacio el carrito
         agregarProducto({
           id: producto.id,
           title: producto.title,
@@ -60,8 +59,10 @@ const Producto = () => {
     }
   };
 
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+
   useEffect(() => {
-    fetchProducto();
+    fetchProducto(); 
   }, [id]);
 
   useEffect(() => {
@@ -75,7 +76,10 @@ const Producto = () => {
           <div className="nav-logo">
             <img src={logo} alt="Logo de la empresa" className="logo" />
           </div>
-          <ul className="nav-menu">
+          <button className="hamburger" onClick={toggleMenu}>
+            ☰
+          </button>
+          <ul className={`nav-menu ${isMenuOpen ? 'open' : ''}`}>
             <li><Link to="/home">Principal</Link></li> 
             <li><Link to="/checkout">Mi carrito</Link></li> 
           </ul>

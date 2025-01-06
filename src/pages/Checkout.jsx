@@ -1,11 +1,14 @@
+// Checkout.jsx
 import React, { useContext, useState } from 'react';
 import { CartContext } from '../context/Carrito';
 import { useNavigate, Link } from 'react-router-dom'; 
 import '../styles/checkout.css';
+import '../styles/index.css';
 import logo from '/plus-icon.png';
 
 const Checkout = () => {
   const { carrito, actualizarCantidad, limpiarCarrito, ordenID } = useContext(CartContext);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate(); 
   const [ordenCompletada, setOrdenCompletada] = useState(false);
 
@@ -23,7 +26,6 @@ const Checkout = () => {
     if (!confirmacion) return;
 
     alert(`¡Gracias por tu compra! Orden N°: ${ordenID}`);
-    
     limpiarCarrito(); 
     setOrdenCompletada(true); 
 
@@ -37,6 +39,8 @@ const Checkout = () => {
     navigate('/home'); 
   };
 
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+
   return (
     <div>
       <header>
@@ -44,8 +48,8 @@ const Checkout = () => {
           <div className="nav-logo">
             <img src={logo} alt="Logo de la empresa" className="logo" />
           </div>
-          <button className="hamburger">☰</button>
-          <ul className="nav-menu">
+          <button className="hamburger" onClick={toggleMenu}>☰</button>
+          <ul className={`nav-menu ${isMenuOpen ? 'open' : ''}`}>
             <li><Link to="/home">Principal</Link></li> 
             <li><Link to="/checkout">Mi carrito</Link></li> 
           </ul>
