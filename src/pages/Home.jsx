@@ -79,7 +79,7 @@ const Home = () => {
         <div className="hero-content">
           <h1>Varieté Market</h1>
           <p>La variedad que buscas, con la calidad que mereces</p>
-          <a href="#" className="cta-button">
+          <a href="#" className="cta-button" onClick={() => document.querySelector('.about-us').scrollIntoView({ behavior: 'smooth' })}>
             ¡Conócenos!
           </a>
         </div>
