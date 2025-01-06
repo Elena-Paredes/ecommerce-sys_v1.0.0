@@ -1,6 +1,6 @@
 // PDP.jsx
 import React, { useEffect, useState, useContext } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom'; // Agregado "Link"
 import { CartContext } from '../context/Carrito'; // Importa el contexto del carrito
 import axios from 'axios';
 import '../styles/producto.css';
@@ -77,8 +77,8 @@ const Producto = () => {
             <img src={logo} alt="Logo de la empresa" className="logo" />
           </div>
           <ul className="nav-menu">
-            <li><a href="/home">Principal</a></li>
-            <li><a href="/checkout">Mi carrito</a></li>
+            <li><Link to="/home">Principal</Link></li> {/* Cambiado <a href="/home"> por <Link to="/home"> */}
+            <li><Link to="/checkout">Mi carrito</Link></li> {/* Cambiado <a href="/checkout"> por <Link to="/checkout"> */}
           </ul>
         </nav>
       </header>
@@ -131,6 +131,7 @@ const Producto = () => {
 };
 
 export default Producto;
+
 
 
 
